@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PresenceHR — Workforce Management</title>
+  <meta name="description" content="Manage attendance, leave, payroll, employees, and projects with PresenceHR.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/landingpage.css">
+  <script src="./js/landingpage.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand" aria-label="PresenceHR home">
+        <span class="brand-icon">P</span>
+        <span>PresenceHR</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#roles">Roles</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="/login" class="button button-primary nav-login">Login</a>
+
+      <button
+        class="menu-button"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span id="menuIcon">☰</span>
+        <span id="closeIcon" class="hidden">✕</span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" hidden>
+      <a href="#features" class="mobile-link">Features</a>
+      <a href="#how-it-works" class="mobile-link">How it works</a>
+      <a href="#roles" class="mobile-link">Roles</a>
+      <a href="#faq" class="mobile-link">FAQ</a>
+      <a href="/login" class="button button-primary mobile-login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero section">
+      <div class="hero-glow"></div>
+
+      <div class="container hero-layout">
+        <div class="hero-content reveal">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            Attendance · Leave · Payroll · Projects
+          </div>
+
+          <h1>Attendance, leave, payroll and projects in one place.</h1>
+
+          <p class="hero-description">
+            An automated internal system engineered for seamless workplace
+            operations. Walk through the door, get recognized instantly,
+            and manage your work effortlessly.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/login" class="button button-primary button-large">Login</a>
+            <a href="#how-it-works" class="text-link">
+              See how it works <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <span><span class="check">✓</span> Role-Based Access</span>
+            <span><span class="check">✓</span> Internal Enterprise System</span>
+          </div>
+        </div>
+
+        <!-- Dashboard preview -->
+        <div class="hero-visual reveal">
+          <div class="dashboard-preview">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="browser-address">portal.presencehr.internal</span>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card">
+                <span class="stat-label">Today</span>
+                <strong>Present</strong>
+                <span class="stat-detail">08:52 AM</span>
+              </article>
+
+              <article class="stat-card">
+                <span class="stat-label">Leave</span>
+                <strong>14 days</strong>
+                <span class="stat-detail">Available</span>
+              </article>
+
+              <article class="stat-card">
+                <span class="stat-label">Projects</span>
+                <strong>3 Active</strong>
+                <span class="stat-detail">Assigned</span>
+              </article>
+            </div>
+
+            <div class="project-preview">
+              <div class="preview-heading">
+                <strong>Current Project Milestones</strong>
+                <span>Q3 Delivery</span>
+              </div>
+
+              <div class="progress-item">
+                <div class="progress-label">
+                  <span>Core Infrastructure V2</span>
+                  <strong>78%</strong>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill primary-fill" style="width: 78%"></span>
+                </div>
+              </div>
+
+              <div class="progress-item">
+                <div class="progress-label">
+                  <span>Client Portal Overhaul</span>
+                  <strong class="green-text">45%</strong>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill green-fill" style="width: 45%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recognition-card">
+            <span class="recognition-icon">✓</span>
+            <span>
+              <small>Door camera</small>
+              <strong>Recognized <span class="status-dot"></span></strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading reveal">
+          <h2>Built for streamlined workforce clarity</h2>
+          <p>
+            Everything your organization needs to manage personnel,
+            schedules, and accountability in a single environment.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon">◎</div>
+            <h3>Face attendance</h3>
+            <p>
+              Biometric camera validation at office entrances with
+              immediate attendance status computation.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">▦</div>
+            <h3>Leave requests</h3>
+            <p>
+              Leave applications and multi-tier manager approvals with
+              real-time balance calculations.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">!</div>
+            <h3>Strikes</h3>
+            <p>
+              Transparent tracking of repeated late entries and policy
+              infractions with employee review records.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">▤</div>
+            <h3>Payroll and payslips</h3>
+            <p>
+              Compensation summaries linked to verified hours, with
+              downloadable PDF payslips.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">♧</div>
+            <h3>Departments and employees</h3>
+            <p>
+              A centralized directory organizing staff by department,
+              reporting lines, responsibilities, and permissions.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">▥</div>
+            <h3>Project tracking</h3>
+            <p>
+              Visual progress bars and task delegation tools to help
+              department heads oversee deliverables.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-white" id="how-it-works">
+      <div class="container">
+        <div class="section-heading reveal">
+          <h2>How it works</h2>
+          <p>
+            A four-step attendance verification process for everyday
+            workplace operations.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card reveal">
+            <div class="step-number">1</div>
+            <h3>Look at the door camera</h3>
+            <p>Approach the entrance sensor for facial verification.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <div class="step-number">2</div>
+            <h3>Door screen confirms</h3>
+            <p>The display confirms verification and access status.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <div class="step-number">3</div>
+            <h3>Status calculated automatically</h3>
+            <p>Present or late status is calculated against your schedule.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <div class="step-number">4</div>
+            <h3>See results on dashboard</h3>
+            <p>Review timecards, strikes, and work progress online.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roles -->
+    <section class="section" id="roles">
+      <div class="container">
+        <div class="section-heading reveal">
+          <h2>Tailored for every workplace role</h2>
+          <p>
+            Defined access boundaries support confidentiality,
+            governance, and employee autonomy.
+          </p>
+        </div>
+
+        <div class="roles-grid">
+          <article class="role-card reveal">
+            <div class="role-accent"></div>
+            <div class="role-content">
+              <div class="role-heading">
+                <h3>Admin</h3>
+                <span class="role-badge">System Owner</span>
+              </div>
+              <p class="role-description">
+                Authority over corporate credentials and system management.
+              </p>
+              <ul class="check-list">
+                <li>Creates HR manager accounts</li>
+                <li>Manages door hardware and camera configurations</li>
+                <li>Monitors system audit logs and data integrity</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role-card reveal">
+            <div class="role-accent"></div>
+            <div class="role-content">
+              <div class="role-heading">
+                <h3>HR</h3>
+                <span class="role-badge">Operations</span>
+              </div>
+              <p class="role-description">
+                Manages staff records, attendance, leave, and payroll.
+              </p>
+              <ul class="check-list">
+                <li>Creates employee profiles and login credentials</li>
+                <li>Manages attendance records and shift calendars</li>
+                <li>Reviews leave applications, strikes, and payroll</li>
+                <li>Supervises departments and company projects</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role-card reveal">
+            <div class="role-accent"></div>
+            <div class="role-content">
+              <div class="role-heading">
+                <h3>Employee</h3>
+                <span class="role-badge">Self-Service</span>
+              </div>
+              <p class="role-description">
+                Access to personal performance, schedules, and team tasks.
+              </p>
+              <ul class="check-list">
+                <li>Views attendance logs and timing reports</li>
+                <li>Submits vacation and sick leave requests</li>
+                <li>Downloads personal monthly payslips</li>
+                <li>Tracks assigned projects and tasks</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section class="section section-white">
+      <div class="container security-layout">
+        <div class="security-intro reveal">
+          <div class="feature-icon security-icon">◇</div>
+          <h2>Your data stays protected</h2>
+          <p>
+            Privacy and secure access are important parts of workforce
+            management. Access should be restricted according to each
+            user's responsibilities.
+          </p>
+          <div class="security-note">
+            Biometric processing and storage should follow the system's
+            verified security design and applicable privacy requirements.
+          </div>
+        </div>
+
+        <div class="security-list reveal">
+          <article class="security-item">
+            <div class="security-item-icon">◉</div>
+            <div>
+              <h3>Protect biometric information</h3>
+              <p>Apply appropriate safeguards to biometric data and records.</p>
+            </div>
+          </article>
+
+          <article class="security-item">
+            <div class="security-item-icon">◎</div>
+            <div>
+              <h3>Role-based access</h3>
+              <p>Employees should access only the records they are authorized to see.</p>
+            </div>
+          </article>
+
+          <article class="security-item">
+            <div class="security-item-icon">▣</div>
+            <div>
+              <h3>Confidential salary information</h3>
+              <p>Restrict salary records and payslips to authorized users.</p>
+            </div>
+          </article>
+
+          <article class="security-item">
+            <div class="security-item-icon">↻</div>
+            <div>
+              <h3>Auditable HR actions</h3>
+              <p>Record important changes to accounts, salaries, and attendance.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-heading reveal">
+          <h2>Frequently asked questions</h2>
+          <p>Quick answers about accessing and using the platform.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <article class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false">
+              <span>How do I get an account?</span>
+              <span class="faq-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Your company HR team or system administrator creates your
+              account. There is no public registration form. Your credentials
+              should be delivered securely by your organization.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false">
+              <span>What if my face is not recognized?</span>
+              <span class="faq-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Contact your HR department. An authorized HR officer can
+              review the incident and correct your attendance record
+              according to company policy.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false">
+              <span>Who can see my data?</span>
+              <span class="faq-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Access depends on your role and company permissions. Personal
+              records and salary information should be available only to
+              you and authorized personnel.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="cta-section">
+      <div class="container cta-content reveal">
+        <h2>Ready to access your dashboard?</h2>
+        <p>
+          Sign in to view your attendance, review project progress,
+          and access your payslips.
+        </p>
+        <a href="/login" class="button button-light button-large">
+          Login to your account
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <a href="#" class="footer-brand">
+        <span class="brand-icon">P</span>
+        <span>
+          <strong>PresenceHR Systems</strong>
+          <small>Internal Workforce &amp; Attendance Management</small>
+        </span>
+      </a>
+
+      <div class="footer-info">
+        <p>
+          © <span id="currentYear"></span> PresenceHR Technologies.
+          All rights reserved.
+        </p>
+        <p>
+          Support:
+          <a href="mailto:support@presencehr.internal">
+            support@presencehr.internal
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | PresenceHR</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/project-details.css">
+    <script src="../js/project-details.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <div class="container">
+            <div class="top-row">
+                <div class="breadcrumb">
+                    <a href="projects.html">My projects</a>
+                    <span class="material-symbols-outlined">chevron_right</span>
+                    <span id="breadcrumbName">Website redesign</span>
+                </div>
+
+                <button class="button button-secondary" id="manageProjectButton">
+                    <span class="material-symbols-outlined">tune</span>
+                    Manage project
+                </button>
+            </div>
+
+            <section class="project-summary card">
+                <div class="project-title-row">
+                    <div class="project-title-content">
+                        <h1 id="projectNameHeading">Website redesign</h1>
+                        <div class="badges" id="projectBadges"></div>
+                    </div>
+                </div>
+
+                <p class="project-description" id="projectDescriptionText"></p>
+
+                <div class="project-facts">
+                    <div class="fact">
+                        <div class="fact-icon">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <div>
+                            <span class="fact-label">Project lead</span>
+                            <strong id="projectLead"></strong>
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="fact-icon">
+                            <span class="material-symbols-outlined">calendar_today</span>
+                        </div>
+                        <div>
+                            <span class="fact-label">Start date</span>
+                            <strong id="projectStartDate"></strong>
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="fact-icon">
+                            <span class="material-symbols-outlined">event</span>
+                        </div>
+                        <div>
+                            <span class="fact-label" id="dueDateLabel">Due date</span>
+                            <strong id="projectDueDate"></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-heading">
+                        <strong id="progressLabel">Progress (0%)</strong>
+                        <span id="progressTasks"></span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="projectProgressBar"></div>
+                    </div>
+                </div>
+            </section>
+
+            <nav class="tabs" aria-label="Project sections">
+                <button class="tab active" data-tab="tasks" type="button">
+                    Tasks <span class="tab-count" id="tasksTabCount">0</span>
+                </button>
+                <button class="tab" data-tab="members" type="button">
+                    Members <span class="tab-count" id="membersTabCount">0</span>
+                </button>
+                <button class="tab" data-tab="activity" type="button">
+                    Activity
+                </button>
+            </nav>
+
+            <!-- Tasks -->
+            <section class="tab-panel" id="tasksPanel">
+                <div class="card table-card">
+                    <div class="toolbar">
+                        <div class="toolbar-filters">
+                            <label class="search-box">
+                                <span class="material-symbols-outlined">search</span>
+                                <input id="taskSearch" type="search" placeholder="Search tasks or assignees...">
+                            </label>
+
+                            <select id="taskStatusFilter" aria-label="Filter tasks by status">
+                                <option value="all">All statuses</option>
+                                <option value="todo">To do</option>
+                                <option value="in_progress">In progress</option>
+                                <option value="done">Done</option>
+                            </select>
+
+                            <select id="taskAssigneeFilter" aria-label="Filter tasks by assignee">
+                                <option value="all">All assignees</option>
+                            </select>
+                        </div>
+
+                        <button class="button button-primary" id="addTaskButton">
+                            <span class="material-symbols-outlined">add</span>
+                            Add task
+                        </button>
+                    </div>
+
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Assignee</th>
+                                    <th>Due date</th>
+                                    <th>Status</th>
+                                    <th class="align-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tasksTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-note">
+                        <span class="material-symbols-outlined">info</span>
+                        <span>Members can change the status of their own tasks. Task details can be managed separately.</span>
+                    </div>
+
+                    <div class="pagination">
+                        <span id="taskResultsText">Showing 0 tasks</span>
+                        <div class="pagination-actions">
+                            <button class="button button-small button-secondary" id="previousPage" disabled>Previous</button>
+                            <span id="pageNumber">1 / 1</span>
+                            <button class="button button-small button-secondary" id="nextPage" disabled>Next</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Members -->
+            <section class="tab-panel" id="membersPanel" hidden>
+                <div class="section-heading">
+                    <div>
+                        <h2>Project members</h2>
+                        <p>People assigned to this project.</p>
+                    </div>
+                    <button class="button button-primary" id="addMemberButton">
+                        <span class="material-symbols-outlined">person_add</span>
+                        Add member
+                    </button>
+                </div>
+                <div class="members-grid" id="membersGrid"></div>
+                <div class="empty-state" id="membersEmptyState" hidden>
+                    <span class="material-symbols-outlined">group_off</span>
+                    <p>No project members found.</p>
+                </div>
+            </section>
+
+            <!-- Activity -->
+            <section class="tab-panel" id="activityPanel" hidden>
+                <div class="section-heading">
+                    <div>
+                        <h2>Project activity</h2>
+                        <p>Recent changes made to this project and its tasks.</p>
+                    </div>
+                </div>
+                <div class="card activity-card">
+                    <div class="activity-list" id="activityList"></div>
+                    <div class="empty-state" id="activityEmptyState" hidden>
+                        <span class="material-symbols-outlined">history</span>
+                        <p>No activity recorded yet.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">PresenceHR</footer>
+
+    <!-- Create/edit project -->
+    <dialog class="modal" id="projectModal">
+        <form class="modal-form" id="projectForm">
+            <div class="modal-header">
+                <div>
+                    <h2 id="projectModalTitle">Manage project</h2>
+                    <p>Update the project's details.</p>
+                </div>
+                <button type="button" class="icon-button" data-close="projectModal" aria-label="Close">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <label class="form-field">
+                <span>Project name</span>
+                <input id="editProjectName" required maxlength="150">
+            </label>
+
+            <label class="form-field">
+                <span>Description</span>
+                <textarea id="editProjectDescription" rows="3"></textarea>
+            </label>
+
+            <label class="form-field">
+                <span>Project lead</span>
+                <select id="editProjectLead" required></select>
+            </label>
+
+            <label class="form-field">
+                <span>Status</span>
+                <select id="editProjectStatus">
+                    <option value="not_started">Not started</option>
+                    <option value="in_progress">In progress</option>
+                    <option value="on_hold">On hold</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </label>
+
+            <div class="form-row">
+                <label class="form-field">
+                    <span>Start date</span>
+                    <input id="editProjectStart" type="date" required>
+                </label>
+                <label class="form-field">
+                    <span>Due date</span>
+                    <input id="editProjectDue" type="date" required>
+                </label>
+            </div>
+
+            <label class="form-field">
+                <span>Departments (separate with commas)</span>
+                <input id="editProjectDepartments" placeholder="Marketing, Design & Product">
+            </label>
+
+            <p class="form-message" id="projectFormMessage" role="status"></p>
+
+            <div class="modal-actions">
+                <button type="button" class="button button-secondary" data-close="projectModal">Cancel</button>
+                <button type="submit" class="button button-primary">Save changes</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Create/edit task -->
+    <dialog class="modal" id="taskModal">
+        <form class="modal-form" id="taskForm">
+            <div class="modal-header">
+                <div>
+                    <h2 id="taskModalTitle">Add task</h2>
+                    <p>Create or update a task for this project.</p>
+                </div>
+                <button type="button" class="icon-button" data-close="taskModal" aria-label="Close">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <input id="editTaskId" type="hidden">
+
+            <label class="form-field">
+                <span>Task title</span>
+                <input id="editTaskTitle" required maxlength="180" placeholder="Enter task title">
+            </label>
+
+            <label class="form-field">
+                <span>Description</span>
+                <textarea id="editTaskDescription" rows="3" placeholder="Optional task details"></textarea>
+            </label>
+
+            <label class="form-field">
+                <span>Assignee</span>
+                <select id="editTaskAssignee" required></select>
+            </label>
+
+            <div class="form-row">
+                <label class="form-field">
+                    <span>Due date</span>
+                    <input id="editTaskDue" type="date">
+                </label>
+                <label class="form-field">
+                    <span>Status</span>
+                    <select id="editTaskStatus">
+                        <option value="todo">To do</option>
+                        <option value="in_progress">In progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </label>
+            </div>
+
+            <p class="form-message" id="taskFormMessage" role="status"></p>
+
+            <div class="modal-actions modal-actions-between">
+                <button type="button" class="button button-danger" id="deleteTaskButton" hidden>Delete task</button>
+                <div class="modal-actions">
+                    <button type="button" class="button button-secondary" data-close="taskModal">Cancel</button>
+                    <button type="submit" class="button button-primary">Save task</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Add member -->
+    <dialog class="modal" id="memberModal">
+        <form class="modal-form" id="memberForm">
+            <div class="modal-header">
+                <div>
+                    <h2>Add project member</h2>
+                    <p>Choose an employee to add to this project.</p>
+                </div>
+                <button type="button" class="icon-button" data-close="memberModal" aria-label="Close">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <label class="form-field">
+                <span>Employee</span>
+                <select id="newMemberSelect" required></select>
+            </label>
+
+            <p class="form-message" id="memberFormMessage" role="status"></p>
+
+            <div class="modal-actions">
+                <button type="button" class="button button-secondary" data-close="memberModal">Cancel</button>
+                <button type="submit" class="button button-primary">Add member</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

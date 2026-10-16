@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Requests | PresenceHR</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/leaveRequests.css">
+    <script src="../js/leaveRequests.js" defer></script>
+</head>
+
+<body>
+    <main class="page-container">
+        <header class="page-header">
+            <div>
+                <h1>Leave requests</h1>
+                <p class="page-description">
+                    Review and manage employee leave requests.
+                </p>
+            </div>
+
+            <div class="fiscal-year">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span id="fiscal-year">Fiscal year</span>
+            </div>
+        </header>
+
+        <!-- Pending requests -->
+        <section class="section-card">
+            <div class="section-header">
+                <div>
+                    <h2>Pending requests</h2>
+                    <p>Review requests awaiting your decision.</p>
+                </div>
+
+                <span class="count-badge" id="pending-count">0 pending</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Leave type</th>
+                            <th>Dates</th>
+                            <th>Days</th>
+                            <th>Note</th>
+                            <th>Balance after</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="pending-table-body">
+                        <tr>
+                            <td colspan="7" class="loading-cell">
+                                Loading requests...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Leave history -->
+        <section class="section-card history-section">
+            <div class="section-header">
+                <div>
+                    <h2>Leave history</h2>
+                    <p>Search and review previously processed requests.</p>
+                </div>
+            </div>
+
+            <div class="filters">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+
+                    <input
+                        type="search"
+                        id="history-search"
+                        placeholder="Search employee..."
+                        aria-label="Search employee"
+                    >
+                </div>
+
+                <select id="history-status-filter" aria-label="Filter by status">
+                    <option value="all">All statuses</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+
+                <select id="history-type-filter" aria-label="Filter by leave type">
+                    <option value="all">All leave types</option>
+                    <option value="normal">Normal</option>
+                    <option value="medical">Medical</option>
+                    <option value="day_off">Day off</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Leave type</th>
+                            <th>Dates</th>
+                            <th>Days</th>
+                            <th>Status</th>
+                            <th>Reviewed by</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="history-table-body">
+                        <tr>
+                            <td colspan="7" class="loading-cell">
+                                Loading history...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <span id="history-pagination-info">Showing 0 requests</span>
+
+                <div class="pagination-actions">
+                    <button
+                        type="button"
+                        class="pagination-button"
+                        id="previous-page"
+                    >
+                        <span class="material-symbols-outlined">chevron_left</span>
+                        Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        class="pagination-button"
+                        id="next-page"
+                    >
+                        Next
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Review dialog -->
+    <dialog id="review-dialog" class="review-dialog">
+        <form id="review-form">
+            <div class="dialog-header">
+                <div>
+                    <h2 id="dialog-title">Review request</h2>
+                    <p id="dialog-description">Confirm your decision.</p>
+                </div>
+
+                <button
+                    type="button"
+                    id="close-dialog"
+                    class="icon-button"
+                    aria-label="Close dialog"
+                >
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="dialog-body">
+                <p id="dialog-employee" class="dialog-employee"></p>
+
+                <label for="review-comment">Comment</label>
+                <textarea
+                    id="review-comment"
+                    rows="3"
+                    placeholder="Add a comment (optional)"
+                ></textarea>
+
+                <p id="dialog-error" class="error-message" hidden></p>
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" id="cancel-review" class="button-secondary">
+                    Cancel
+                </button>
+
+                <button type="submit" id="confirm-review" class="button-primary">
+                    Confirm
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

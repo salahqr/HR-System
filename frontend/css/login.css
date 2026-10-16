@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F9F9FF;
+    color: #151B2A;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 20px 24px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#logo {
+    width: 48px;
+    height: 48px;
+    background-color: #3968AC;
+    border-radius: 12px;
+    padding: 10px;
+    object-fit: contain;
+}
+
+header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #151B2A;
+}
+
+header h1 span {
+    color: #3968AC;
+}
+
+header h3 {
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #555F6D;
+}
+
+/* Login card */
+main {
+    width: 100%;
+    max-width: 400px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(21, 27, 42, 0.04);
+}
+
+/* Login heading */
+main h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    margin-bottom: 8px;
+}
+
+main h4 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #555F6D;
+    margin-bottom: 24px;
+}
+
+/* Form */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #151B2A;
+    margin-top: 4px;
+}
+
+/* Inputs */
+form input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #C3C6D2;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    color: #151B2A;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form input::placeholder {
+    color: #737782;
+}
+
+form input:focus {
+    border-color: #3968AC;
+    box-shadow: 0 0 0 3px rgba(57, 104, 172, 0.16);
+}
+
+/* Buttons */
+form button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Login button */
+form button[type="submit"] {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #3968AC;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+form button[type="submit"]:hover {
+    background-color: #1A4F92;
+}
+
+/* Eye button */
+form button img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.password-box {
+    position: relative;   /* moved here from #password */
+}
+
+#togglePassword {
+    position: absolute;
+    right: 7px;
+    top: 14px;
+    transform: translateY(-50%);  /* centers it, instead of top: 5px */
+    border: none;
+    background: transparent;
+}
+
+/* Forgot password button */
+form button:last-child {
+    align-self: center;
+    margin-top: 8px;
+    padding: 4px 8px;
+    border: none;
+    background: transparent;
+    color: #3968AC;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+form button:last-child:hover {
+    color: #1A4F92;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: #555F6D;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+footer p + p {
+    margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    body {
+        padding: 24px 16px;
+    }
+
+    main {
+        padding: 24px;
+    }
+
+    header h1 {
+        font-size: 18px;
+    }
+
+    main h2 {
+        font-size: 26px;
+    }
+}
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/nav.css">
+    <link rel="stylesheet" href="../../css/HR/emp.css">
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h1>Employees</h1>
+                <span class="account-count" id="numAccounts"></span>
+            </div>
+
+            <button type="button" class="add-button">
+                <img src="../../assets/accountPlus.svg" alt=""> Add employee
+            </button>
+        </div>
+    </div>
+
+    <main class="main-view">
+        <section id="content"></section>
+    </main>
+
+<script type="module">
+    try {
+        const { renderNav } = await import('../../js/components/navBarForHR.js');
+        renderNav(document.getElementById('nav-container'));
+    } catch (error) {
+        console.error('NAV failed:', error);
+    }
+
+    try {
+        const { renderPeopleTable } = await import('../../js/components/dashboard.js');
+        renderPeopleTable(document.getElementById('content'));
+    } catch (error) {
+        console.error('TABLE failed:', error);
+    }
+    
+    
+try {
+    const { setupAddUser } =
+        await import('../../js/components/addUserDialog.js');
+
+    setupAddUser({
+        openButton: document.querySelector('.add-button'),
+        title: 'Add HR user',
+        onCreated: () => location.reload()
+    });
+
+} catch (error) {
+    console.error('ADD USER failed:', error);
+}
+
+</script>
+</body>
+</html>

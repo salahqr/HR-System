@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PresenceHR | Employee Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1">
+
+    <link rel="stylesheet" href="../css/emp.css">
+    <script src="../js/emp.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+                    <a class="brand" href="dashboard.html">
+                    <span class="brand-icon material-symbols-outlined">shield_person</span>
+                <span>PresenceHR</span>
+            </a>
+
+ 
+            <nav class="navigation">
+                <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                <a class="nav-link" href="projects.html">My projects</a>
+                <a class="nav-link" href="profile.html">Profile</a>
+            </nav>
+
+
+            <div class="user-menu">
+                <div class="avatar" id="user-avatar">--</div>
+                <span class="user-name" id="user-name">Loading...</span>
+                <span class="user-divider"></span>
+                <button class="text-button" id="logout-button" type="button">
+                    Log out
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-container">
+
+            <section class="page-heading">
+                <div>
+                    <p class="eyebrow">EMPLOYEE PORTAL</p>
+                    <h1 id="greeting">Welcome back</h1>
+                    <p class="muted">Here is your work summary.</p>
+                </div>
+
+                <div class="current-date">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <span id="current-date">Loading date...</span>
+                </div>
+            </section>
+
+            <div class="error-message" id="dashboard-error" role="alert" hidden></div>
+
+            <section class="summary-grid" aria-label="Work summary">
+                <article class="summary-card">
+                    <div class="card-top">
+                        <span class="icon-box material-symbols-outlined">schedule</span>
+                        <button class="view-button" data-page="/employee/attendance">
+                            View <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                    <p class="card-label">Today's attendance</p>
+                    <div class="summary-value-row">
+                        <span class="status-badge" id="attendance-status">--</span>
+                        <strong class="summary-value" id="check-in-time">--</strong>
+                    </div>
+                    <p class="card-footnote" id="attendance-note">Attendance information</p>
+                </article>
+
+                <article class="summary-card">
+                    <div class="card-top">
+                        <span class="icon-box material-symbols-outlined">beach_access</span>
+                        <button class="view-button" data-page="/employee/leaves">
+                            View <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                    <p class="card-label">Leave balance</p>
+                    <p class="summary-value">
+                        <span id="leave-remaining">--</span>
+                        <span class="value-unit">days left</span>
+                    </p>
+                    <p class="card-footnote">Remaining annual allowances</p>
+                </article>
+
+                <article class="summary-card">
+                    <div class="card-top">
+                        <span class="icon-box material-symbols-outlined">gavel</span>
+                        <button class="view-button" data-page="/employee/strikes">
+                            View <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                    <p class="card-label">Open strikes</p>
+                    <p class="summary-value" id="open-strikes">--</p>
+                    <p class="card-footnote">Currently unresolved</p>
+                </article>
+
+                <article class="summary-card">
+                    <div class="card-top">
+                        <span class="icon-box material-symbols-outlined">folder_managed</span>
+                        <button class="view-button" data-page="/employee/projects">
+                            View <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                    <p class="card-label">Active projects</p>
+                    <p class="summary-value" id="active-project-count">--</p>
+                    <p class="card-footnote">Projects assigned to you</p>
+                </article>
+            </section>
+
+            <section class="middle-grid">
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <h2>Attendance this month</h2>
+                        <select id="attendance-period" aria-label="Attendance period">
+                            <option value="month">This month</option>
+                            <option value="last_month">Last month</option>
+                            <option value="three_months">Last 3 months</option>
+                        </select>
+                    </div>
+
+                    <div class="stacked-bar" id="attendance-bar"></div>
+                    <div class="legend-list" id="attendance-legend">
+                        <p class="muted">Loading attendance...</p>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span>Working period summary</span>
+                        <strong id="working-days">--</strong>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <h2>Leave balance &amp; usage</h2>
+                    </div>
+
+                    <div class="leave-list" id="leave-breakdown">
+                        <p class="muted">Loading leave balance...</p>
+                    </div>
+
+                    <div class="panel-footer">
+                        <span>Total allowance</span>
+                        <strong id="leave-total">--</strong>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <h2>My projects</h2>
+                        <span class="count-badge" id="project-count-badge">0 active</span>
+                    </div>
+
+                    <div class="project-list" id="project-list">
+                        <p class="muted">Loading projects...</p>
+                    </div>
+
+                    <div class="panel-footer footer-link">
+                        <button class="text-link" data-page="/employee/projects">
+                            Open my projects
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                        
+                    </div>
+                </article>
+
+            </section>
+
+            <section class="bottom-grid">
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div class="heading-with-icon">
+                            <span class="icon-box material-symbols-outlined">payments</span>
+                            <h2>Latest payslip</h2>
+                        </div>
+                    </div>
+
+                    <div id="latest-payslip">
+                        <p class="muted">Loading payslip...</p>
+                    </div>
+
+                    <div class="panel-actions">
+                        <button class="primary-button" id="download-payslip" type="button">
+                            <span class="material-symbols-outlined">download</span>
+                            Download PDF
+                        </button>
+
+                        <button class="text-link" data-page="/employee/payslips">
+                            View all payslips
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div class="heading-with-icon">
+                            <span class="icon-box material-symbols-outlined">event_note</span>
+                            <h2>Recent leave requests</h2>
+                        </div>
+
+                        <button class="primary-button" data-page="/employee/leaves/create">
+                            <span class="material-symbols-outlined">add</span>
+                            Request leave
+                        </button>
+                    </div>
+
+                    <div class="request-list" id="leave-request-list">
+                        <p class="muted">Loading leave requests...</p>
+                    </div>
+
+                    <div class="panel-footer footer-link">
+                        <button class="text-link" data-page="/employee/leaves">
+                            View all requests
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>PresenceHR Enterprise Suite</p>
+    </footer>
+
+    <!-- All internal pages open in this iframe modal. -->
+    <dialog id="page-dialog" class="page-dialog">
+        <div class="dialog-header">
+            <h2 id="dialog-title">Page</h2>
+            <button id="close-dialog" class="close-button" type="button"
+                    aria-label="Close page">&times;</button>
+        </div>
+        <iframe id="page-frame" title="PresenceHR page"></iframe>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

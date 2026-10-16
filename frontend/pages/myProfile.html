@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My profile · PresenceHR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/myProfile.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <span class="brand-mark"><span class="ms">shield_person</span></span>
+      <strong>PresenceHR</strong>
+    </div>
+    <nav class="topnav" aria-label="Main">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="my-projects.html">My projects</a>
+      <a href="my-profile.html" aria-current="page">Profile</a>
+    </nav>
+    <div class="me">
+      <span class="me-avatar" id="me-avatar">…</span>
+      <span class="me-name" id="me-name"></span>
+      <button class="link-btn" type="button" id="logout">Log out</button>
+    </div>
+  </div>
+</header>
+
+<main class="page" id="app" aria-live="polite"></main>
+
+<footer class="foot">PresenceHR</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="../js/myProfile.js"></script>
+</body>
+</html>

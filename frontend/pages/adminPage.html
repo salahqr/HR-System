@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/adminpage.css">
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <div class="topbar-content">
+                <div class="brand">
+                    <img src="../assets/logo.svg" alt="logo" id="logo">
+                    <div>
+                        <h3>PresenceHR</h3>
+                        <p>ENTERPRISE ADMIN CONSOLE</p>
+                    </div>
+                </div>
+
+                <div class="user-area">
+                   <div class="user-photo">
+                        <img src="../assets/account.svg" alt="photo of account">
+                    </div>
+                    <div class="user-info">
+                        <h3 id="username"></h3>
+                        <p id="userSub">Corporate Ops</p>
+                    </div>
+                    <span class="role-badge" id="roleBadge">Admin</span>
+                    <button type="button" class="logout-button" id="logoutBtn">Log out</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <div class="page-title">
+                    <h1>HR people</h1>
+                    <span class="account-count" id="numAccounts"></span>
+                </div>
+
+                <button type="button" class="add-button">
+                    <img src="../assets/accountPlus.svg" alt=""> Add HR
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-view">
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-info">
+                    <p>Active HR users</p>
+                    <h2 id="activeHr"></h2>
+                </div>
+                <div class="stat-icon active-icon"><img src="../assets/padage.svg" alt=""></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <p>Face not enrolled</p>
+                    <h2 id="noFace"></h2>
+                </div>
+                <div class="stat-icon face-icon"><img src="../assets/person.svg" alt=""></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <p>Open strikes</p>
+                    <h2 id="openStrikes"></h2>
+                </div>
+                <div class="stat-icon strike-icon"><img src="../assets/hammer.svg" alt=""></div>
+            </div>
+        </section>
+
+        <section id="content"></section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; PresenceHR Technologies Inc. All rights reserved.</p>
+        <p>
+            <span>Authorized Personnel Only</span>
+            <span class="dot">•</span>
+            <span>Secured with HTTPS</span>
+        </p>
+    </footer>
+
+    <script type="module">
+        import { renderPeopleTable } from '../js/components/dashboard.js';
+        
+        renderPeopleTable(document.getElementById('content'));
+
+        import { setupAddUser } from '../js/components/addUserDialog.js';
+
+setupAddUser({
+    openButton: document.querySelector('.add-button'),
+    title: 'Add HR user',
+    onCreated: () => location.reload()
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | PresenceHR</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/projects.css">
+    <script src="../js/projects.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <div class="container">
+
+            <section class="page-header">
+                <div class="title-group">
+                    <h1>My projects</h1>
+                    <span class="count-badge" id="projectCount">3 projects</span>
+                </div>
+
+                <button class="button button-primary" id="newProjectButton">
+                    <span class="material-symbols-outlined">add</span>
+                    New project
+                </button>
+            </section>
+
+            <section class="toolbar">
+                <div class="toolbar-controls">
+                    <label class="search-box">
+                        <span class="material-symbols-outlined">search</span>
+                        <input
+                            type="search"
+                            id="projectSearchInput"
+                            placeholder="Search projects..."
+                            aria-label="Search projects"
+                        >
+                    </label>
+
+                    <select id="statusFilterSelect" aria-label="Filter by project status">
+                        <option value="all">Status: All</option>
+                        <option value="not_started">Not started</option>
+                        <option value="in_progress">In progress</option>
+                        <option value="on_hold">On hold</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <p class="results-count" id="resultsCount">
+                    Showing 3 assigned projects
+                </p>
+            </section>
+
+            <section class="projects-grid" id="projectsGrid"
+                aria-label="Assigned projects">
+                <!-- Project cards are rendered by projects.js. -->
+            </section>
+
+            <section class="empty-state" id="emptyState" hidden>
+                <div class="empty-icon">
+                    <span class="material-symbols-outlined">folder_off</span>
+                </div>
+                <h2>No projects found</h2>
+                <p id="emptyMessage">
+                    You are not assigned to any projects matching these filters.
+                </p>
+                <button class="button button-secondary" id="clearFiltersButton">
+                    Clear filters
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- New project modal -->
+    <dialog class="modal" id="projectModal">
+        <form id="projectForm" class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2>New project</h2>
+                    <p>Create a project for your team.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="icon-button"
+                    id="closeModalButton"
+                    aria-label="Close modal"
+                >
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <label class="form-field">
+                <span>Project name</span>
+                <input
+                    type="text"
+                    id="projectName"
+                    name="name"
+                    placeholder="Enter project name"
+                    maxlength="120"
+                    required
+                >
+            </label>
+
+            <label class="form-field">
+                <span>Description</span>
+                <textarea
+                    id="projectDescription"
+                    name="description"
+                    rows="3"
+                    placeholder="Describe the project (optional)"
+                ></textarea>
+            </label>
+
+            <label class="form-field">
+                <span>Status</span>
+                <select id="projectStatus" name="status" required>
+                    <option value="not_started">Not started</option>
+                    <option value="in_progress">In progress</option>
+                    <option value="on_hold">On hold</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </label>
+
+            <label class="form-field">
+                <span>Due date</span>
+                <input type="date" id="projectDueDate" name="due_date">
+            </label>
+
+            <p class="form-message" id="formMessage" role="status"></p>
+
+            <div class="modal-actions">
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    id="cancelModalButton"
+                >
+                    Cancel
+                </button>
+                <button type="submit" class="button button-primary">
+                    Create project
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <footer class="footer">
+        <p>PresenceHR Enterprise Suite</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | PresenceHR</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../../css/HR/Reports.css">
+    <script src="../../js/HR/Reports.js" defer></script>
+</head>
+
+<body>
+    <main class="page-container">
+        <header class="page-header">
+            <h1>Reports</h1>
+
+            <div class="filters">
+                <div class="date-filter">
+                    <label for="start-date">From</label>
+                    <input type="date" id="start-date">
+                </div>
+
+                <div class="date-filter">
+                    <label for="end-date">To</label>
+                    <input type="date" id="end-date">
+                </div>
+
+                <div class="department-filter">
+                    <label for="department-filter">Department</label>
+                    <select id="department-filter">
+                        <option value="all">All departments</option>
+                    </select>
+                </div>
+
+                <button type="button" id="apply-filters" class="button-primary">
+                    <span class="material-symbols-outlined">filter_alt</span>
+                    Apply
+                </button>
+            </div>
+        </header>
+
+        <p id="report-period" class="report-period"></p>
+
+        <!-- Summary cards -->
+        <section class="stats-grid">
+            <article class="stat-card">
+                <p>On-time rate</p>
+                <strong id="on-time-rate">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <p>Late arrivals</p>
+                <strong id="late-arrivals">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <p>Absences</p>
+                <strong id="absences">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <p>Leave days taken</p>
+                <strong id="leave-days">—</strong>
+            </article>
+        </section>
+
+        <!-- Attendance and leave charts -->
+        <section class="two-thirds-grid">
+            <article class="report-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Attendance by week</h2>
+                        <p>Attendance records grouped by week.</p>
+                    </div>
+
+                    <div class="legend">
+                        <span><i class="dot present"></i>Present</span>
+                        <span><i class="dot late"></i>Late</span>
+                        <span><i class="dot absent"></i>Absent</span>
+                    </div>
+                </div>
+
+                <div id="weekly-attendance" class="weekly-chart"></div>
+            </article>
+
+            <article class="report-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Leave days by type</h2>
+                        <p>Approved leave within the selected period.</p>
+                    </div>
+                </div>
+
+                <div class="donut-container">
+                    <div id="leave-donut" class="donut-chart">
+                        <div class="donut-center">
+                            <strong id="donut-total">0</strong>
+                            <span>Total days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="leave-legend" class="chart-legend"></div>
+            </article>
+        </section>
+
+        <!-- Department attendance and project status -->
+        <section class="two-column-grid">
+            <article class="report-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Late and absent by department</h2>
+                        <p>Compare attendance issues between teams.</p>
+                    </div>
+                </div>
+
+                <div id="department-attendance" class="bar-list"></div>
+            </article>
+
+            <article class="report-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Projects by status</h2>
+                        <p>Current project distribution.</p>
+                    </div>
+                </div>
+
+                <div id="project-status" class="bar-list"></div>
+
+                <div class="card-footer">
+                    <span id="overdue-count">0 projects are overdue</span>
+                    <span class="status-badge status-overdue">Overdue</span>
+                </div>
+            </article>
+        </section>
+
+        <!-- Payroll -->
+        <section class="report-card section-spacing">
+            <div class="card-header">
+                <div>
+                    <h2>Net pay per month</h2>
+                    <p>Last six months. This chart is not affected by the date filter.</p>
+                </div>
+            </div>
+
+            <div id="payroll-chart" class="payroll-chart"></div>
+        </section>
+
+        <!-- Department details -->
+        <section class="report-card section-spacing">
+            <div class="card-header">
+                <div>
+                    <h2>Details by department</h2>
+                    <p>Attendance, leave, and open strikes for the selected period.</p>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Department</th>
+                            <th>Employees</th>
+                            <th>Late arrivals</th>
+                            <th>Absences</th>
+                            <th>Leave days</th>
+                            <th>Open strikes</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="department-table-body"></tbody>
+                    <tfoot id="department-table-footer"></tfoot>
+                </table>
+            </div>
+        </section>
+
+        <p id="report-message" class="report-message" role="status"></p>
+    </main>
+
+    <footer class="page-footer">
+        PresenceHR
+    </footer>
+</body>
+</html>

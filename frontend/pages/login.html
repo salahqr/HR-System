@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <header>
+        <img src="../assets/logo.svg" alt="logo" id="logo">
+        <div>
+            <h1>Presence<span>HR</span></h1>
+            <h3>ENTERPRISE WORKFORCE SECURITY</h3>
+        </div>
+    </header>
+
+    <main>
+        <h2>Login</h2>
+        <h4>Enter your work credentials to access your
+dashboard</h4>
+
+        <p id="error" role="alert"></p>
+        
+        <form action="" method="post" id="form">
+            <label for="email">Work Email</label>
+            <input type="email" name="email" id="email" placeholder="alex@company.com" required>
+
+            <label for="password">Password</label>
+            <div class="password-box">
+                <input type="password" required name="password" id="password">
+                <button type="button" id="togglePassword"><img src="../assets/eyeClosed.svg" alt="" id="image"></button>
+            </div>
+
+            <button type="submit">Log in</button>
+            <button id="forgetPass">Forgot Password?</button>
+        </form>
+    </main>
+
+    <footer class="text-center text-xs text-gray-400 py-4">
+  <p>&copy; PresenceHR Technologies Inc. All rights reserved.</p>
+  <p class="mt-1">
+    <span>Authorized Personnel Only</span>
+    <span class="mx-2">•</span>
+    <span>Secured with HTTPS</span>
+  </p>
+</footer>
+
+<script src="../js/login.js"></script>
+</body>
+</html>
+
+
