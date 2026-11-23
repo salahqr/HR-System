@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+opencv-contrib-python
+httpx
